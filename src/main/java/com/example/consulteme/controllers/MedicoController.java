@@ -2,6 +2,7 @@ package com.example.consulteme.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/medico")
 @AllArgsConstructor
+@CrossOrigin
 public class MedicoController {
 
   private MedicoService service;
