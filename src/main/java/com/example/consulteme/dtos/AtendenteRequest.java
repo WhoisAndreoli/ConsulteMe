@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AtendenteRequest {
-  @NotBlank
+  @NotBlank(message = "Nome inválido")
   private String nome;
-  @NotBlank
+  @NotBlank(message = "Senha inválida")
   private String senha;
   @NotBlank(message = "Email inválido")
   @Email(regexp = "^(.+)@(\\S+)$", message = "Email inválido")

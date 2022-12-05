@@ -1,5 +1,6 @@
 package com.example.consulteme.models;
 
+import com.example.consulteme.dtos.ConsultaRequest;
 import com.example.consulteme.enums.Status;
 
 import jakarta.persistence.Entity;
@@ -34,4 +35,11 @@ public class Consulta {
   @ManyToOne
   @JoinColumn(name = "FK_Paciente")
   private Paciente paciente;
+
+  public Consulta(ConsultaRequest request) {
+    this.status = Status.FILA;
+    this.medico = request.getMedico();
+    this.paciente = request.getPaciente();
+  }
+
 }
