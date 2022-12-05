@@ -12,20 +12,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicoRequest {
-  @NotBlank(message = "CRM inválido")
-  private String crm;
-
-  @NotBlank(message = "Nome inválido")
+public class AtendenteRequest {
+  @NotBlank
   private String nome;
-
+  @NotBlank
+  private String senha;
   @NotBlank(message = "Email inválido")
   @Email(regexp = "^(.+)@(\\S+)$", message = "Email inválido")
   private String email;
-
-  @NotBlank(message = "Senha inválida")
-  private String senha;
-
   @NotNull
   private Gerente gerente;
 }
