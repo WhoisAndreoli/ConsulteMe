@@ -1,5 +1,7 @@
 package com.example.consulteme.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.consulteme.dtos.ConsultaPatchRequest;
@@ -32,6 +34,11 @@ public class MedicoServiceImpl implements MedicoService {
     }
     consulta.setStatus(Status.CONCLUIDA);
     return new ConsultaResponse(consultaRepositoy.save(consulta));
+  }
+
+  @Override
+  public List<ConsultaResponse> buscarConsulta() {
+    return consultaRepositoy.findAll().stream().map(ConsultaResponse::new).toList();
   }
 
 }
