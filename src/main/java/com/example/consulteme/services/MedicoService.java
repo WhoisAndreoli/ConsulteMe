@@ -9,5 +9,6 @@ public interface MedicoService {
 
   ConsultaResponse finalizarConsulta(Long id, ConsultaPatchRequest request);
 
-  List<ConsultaResponse> buscarConsulta();
+  List<ConsultaResponse> buscarConsultaPorCrm(String crm);
+
 }

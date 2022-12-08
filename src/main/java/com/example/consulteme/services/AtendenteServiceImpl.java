@@ -88,4 +88,9 @@ public class AtendenteServiceImpl implements AtendenteService {
 
   }
 
+  @Override
+  public List<ConsultaResponse> buscarConsulta() {
+    return consultaRepositoy.findAll().stream().map(ConsultaResponse::new).toList();
+  }
+
 }

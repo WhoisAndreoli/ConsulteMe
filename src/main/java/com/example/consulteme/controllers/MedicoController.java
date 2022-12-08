@@ -22,7 +22,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/medico")
 @AllArgsConstructor
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class MedicoController {
 
   private MedicoService service;
@@ -33,8 +33,8 @@ public class MedicoController {
     return new ResponseEntity<>(service.finalizarConsulta(id, request), HttpStatus.OK);
   }
 
-  @GetMapping("/buscar-consulta")
-  public List<ConsultaResponse> buscarConsulta() {
-    return service.buscarConsulta();
+  @GetMapping("/buscar-consulta/{crm}")
+  public List<ConsultaResponse> buscarConsultaPorCrm(@PathVariable String crm) {
+    return service.buscarConsultaPorCrm(crm);
   }
 }

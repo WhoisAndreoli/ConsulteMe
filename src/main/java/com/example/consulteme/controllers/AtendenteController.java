@@ -25,7 +25,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/atendente")
 @AllArgsConstructor
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class AtendenteController {
 
   AtendenteService service;
@@ -54,5 +54,10 @@ public class AtendenteController {
   @PostMapping("/criar-consulta")
   public ResponseEntity<ConsultaResponse> criarConsulta(@Valid @RequestBody ConsultaRequest consultaRequest) {
     return new ResponseEntity<>(service.criarConsulta(consultaRequest), HttpStatus.CREATED);
+  }
+
+  @GetMapping("/buscar-consulta")
+  public List<ConsultaResponse> buscarConsulta() {
+    return service.buscarConsulta();
   }
 }

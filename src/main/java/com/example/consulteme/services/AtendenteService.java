@@ -17,4 +17,6 @@ public interface AtendenteService {
   PacienteDTO atualizarPaciente(String cpf, PacientePatchRequest pacientePatchRequest);
 
   ConsultaResponse criarConsulta(ConsultaRequest consultaRequest);
+
+  List<ConsultaResponse> buscarConsulta();
 }

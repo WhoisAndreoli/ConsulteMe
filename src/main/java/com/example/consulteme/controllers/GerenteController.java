@@ -28,7 +28,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/gerente")
 @AllArgsConstructor
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class GerenteController {
 
   private GerenteService service;

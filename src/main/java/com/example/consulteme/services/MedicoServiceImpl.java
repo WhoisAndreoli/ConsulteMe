@@ -37,8 +37,8 @@ public class MedicoServiceImpl implements MedicoService {
   }
 
   @Override
-  public List<ConsultaResponse> buscarConsulta() {
-    return consultaRepositoy.findAll().stream().map(ConsultaResponse::new).toList();
+  public List<ConsultaResponse> buscarConsultaPorCrm(String crm) {
+    return consultaRepositoy.findConsultaByCrm(crm).stream().map(ConsultaResponse::new).toList();
   }
 
 }
