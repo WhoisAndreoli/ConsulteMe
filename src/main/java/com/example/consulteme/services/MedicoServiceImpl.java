@@ -23,16 +23,22 @@ public class MedicoServiceImpl implements MedicoService {
   public ConsultaResponse finalizarConsulta(Long id, ConsultaPatchRequest request) {
     Consulta consulta = consultaRepositoy.findById(id)
         .orElseThrow(() -> new NotFoundException("Consulta não cadastrada"));
-    if (request.getDiagnostico() != null) {
-      consulta.setDiagnostico(request.getDiagnostico());
+
+    if (request.getStatus().equals(Status.CONCLUIDA)) {
+
+      if (!request.getDiagnostico().isBlank()) {
+        consulta.setDiagnostico(request.getDiagnostico());
+      }
+      if (!request.getExame().isBlank()) {
+        consulta.setExame(request.getExame());
+      }
+      if (!request.getReceita().isBlank()) {
+        consulta.setReceita(request.getReceita());
+      }
+      consulta.setStatus(Status.CONCLUIDA);
+    } else {
+      consulta.setStatus(Status.CANCELADA);
     }
-    if (request.getExame() != null) {
-      consulta.setExame(request.getExame());
-    }
-    if (request.getReceita() != null) {
-      consulta.setReceita(request.getReceita());
-    }
-    consulta.setStatus(Status.CONCLUIDA);
     return new ConsultaResponse(consultaRepositoy.save(consulta));
   }
 

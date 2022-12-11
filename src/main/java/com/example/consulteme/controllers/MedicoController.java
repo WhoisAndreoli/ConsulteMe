@@ -29,7 +29,7 @@ public class MedicoController {
 
   @PatchMapping("/finalizar-consulta/{id}")
   public ResponseEntity<ConsultaResponse> finalizarConsulta(@Valid @PathVariable Long id,
-      @RequestBody ConsultaPatchRequest request) {
+      @Valid @RequestBody ConsultaPatchRequest request) {
     return new ResponseEntity<>(service.finalizarConsulta(id, request), HttpStatus.OK);
   }
 

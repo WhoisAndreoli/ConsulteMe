@@ -13,4 +13,7 @@ public interface ConsultaRepositoy extends JpaRepository<Consulta, Long> {
 
   @Query(value = "Select u from Consulta u join u.medico m where m.crm = ?1 and u.status = 'FILA' order by u.id")
   List<Consulta> findConsultaByCrm(String crm);
+
+  @Query(value = "Select u from Consulta u where u.status = 'FILA'")
+  List<Consulta> findAllConsulta();
 }
