@@ -58,13 +58,13 @@ public class GerenteServiceImpl implements GerenteService {
   @Override
   public MedicoResponse atualizarMedico(String crm, MedicoPatchRequest medicoPatchRequest) {
     Medico medico = medicoRepository.findById(crm).orElseThrow(() -> new NotFoundException(MEDICO_NAO_CADASTRADO));
-    if (medicoPatchRequest.getEmail() != null) {
+    if (!medicoPatchRequest.getEmail().isBlank()) {
       medico.setEmail(medicoPatchRequest.getEmail());
     }
-    if (medicoPatchRequest.getNome() != null) {
+    if (!medicoPatchRequest.getNome().isBlank()) {
       medico.setNome(medicoPatchRequest.getNome());
     }
-    if (medicoPatchRequest.getSenha() != null) {
+    if (!medicoPatchRequest.getSenha().isBlank()) {
       medico.setSenha(medicoPatchRequest.getSenha());
     }
     return new MedicoResponse(medicoRepository.save(medico));
@@ -103,13 +103,13 @@ public class GerenteServiceImpl implements GerenteService {
   public AtendenteResponse atualizarAtendente(long id, AtendentePatchRequest atendentePatchRequest) {
     Atendente atendente = atendenteRepository.findById(id)
         .orElseThrow(() -> new NotFoundException(ATENDENTE_NAO_CADASTRADO));
-    if (atendentePatchRequest.getEmail() != null) {
+    if (!atendentePatchRequest.getEmail().isBlank()) {
       atendente.setEmail(atendentePatchRequest.getEmail());
     }
-    if (atendentePatchRequest.getNome() != null) {
+    if (!atendentePatchRequest.getNome().isBlank()) {
       atendente.setNome(atendentePatchRequest.getNome());
     }
-    if (atendentePatchRequest.getSenha() != null) {
+    if (!atendentePatchRequest.getSenha().isBlank()) {
       atendente.setSenha(atendentePatchRequest.getSenha());
     }
     return new AtendenteResponse(atendenteRepository.save(atendente));

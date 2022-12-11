@@ -55,19 +55,19 @@ public class AtendenteServiceImpl implements AtendenteService {
   public PacienteDTO atualizarPaciente(String cpf, PacientePatchRequest pacienteR) {
     Paciente paciente = pacienteRepository.findById(cpf)
         .orElseThrow(() -> new NotFoundException(PACIENTE_NAO_CADASTRADO));
-    if (pacienteR.getNome() != null) {
+    if (!pacienteR.getNome().isBlank()) {
       paciente.setNome(pacienteR.getNome());
     }
-    if (pacienteR.getDoencaCronica() != null) {
+    if (!pacienteR.getDoencaCronica().isBlank()) {
       paciente.setDoencaCronica(pacienteR.getDoencaCronica());
     }
-    if (pacienteR.getEndereco() != null) {
+    if (!pacienteR.getEndereco().isBlank()) {
       paciente.setEndereco(pacienteR.getEndereco());
     }
-    if (pacienteR.getTelefone() != null) {
+    if (!pacienteR.getTelefone().isBlank()) {
       paciente.setTelefone(pacienteR.getTelefone());
     }
-    if (pacienteR.getDtNascimento() != null) {
+    if (!pacienteR.getDtNascimento().isBlank()) {
       paciente.setDtNascimento(LocalDate.parse(pacienteR.getDtNascimento(), DateTimeFormatter.ofPattern("d/M/uuuu")));
     }
     return new PacienteDTO(pacienteRepository.save(paciente));
@@ -90,7 +90,7 @@ public class AtendenteServiceImpl implements AtendenteService {
 
   @Override
   public List<ConsultaResponse> buscarConsulta() {
-    return consultaRepositoy.findAll().stream().map(ConsultaResponse::new).toList();
+    return consultaRepositoy.findAllConsulta().stream().map(ConsultaResponse::new).toList();
   }
 
 }

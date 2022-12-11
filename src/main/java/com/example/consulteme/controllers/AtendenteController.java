@@ -47,7 +47,7 @@ public class AtendenteController {
 
   @PatchMapping("/atualizar-paciente/{cpf}")
   public ResponseEntity<PacienteDTO> atualizarPaciente(@PathVariable String cpf,
-      @RequestBody PacientePatchRequest request) {
+      @Valid @RequestBody PacientePatchRequest request) {
     return new ResponseEntity<>(service.atualizarPaciente(cpf, request), HttpStatus.OK);
   }
 

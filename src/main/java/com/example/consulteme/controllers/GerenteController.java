@@ -56,7 +56,7 @@ public class GerenteController {
 
   @PatchMapping("/atualizar-medico/{crm}")
   public ResponseEntity<MedicoResponse> atualizarMedico(@Valid @PathVariable String crm,
-      @RequestBody MedicoPatchRequest request) {
+      @Valid @RequestBody MedicoPatchRequest request) {
     return new ResponseEntity<>(service.atualizarMedico(crm, request), HttpStatus.OK);
   }
 
@@ -83,7 +83,7 @@ public class GerenteController {
 
   @PatchMapping("/atualizar-atendente/{id}")
   public ResponseEntity<AtendenteResponse> atualizarAtendente(@Valid @PathVariable Long id,
-      @RequestBody AtendentePatchRequest request) {
+      @Valid @RequestBody AtendentePatchRequest request) {
     return new ResponseEntity<>(service.atualizarAtendente(id, request), HttpStatus.OK);
   }
 }
