@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -27,12 +28,14 @@ public class MedicoController {
 
   private MedicoService service;
 
+  @PreAuthorize("hasAuthority('MEDICO')")
   @PatchMapping("/finalizar-consulta/{id}")
   public ResponseEntity<ConsultaResponse> finalizarConsulta(@Valid @PathVariable Long id,
       @Valid @RequestBody ConsultaPatchRequest request) {
     return new ResponseEntity<>(service.finalizarConsulta(id, request), HttpStatus.OK);
   }
 
+  @PreAuthorize("hasAuthority('MEDICO')")
   @GetMapping("/buscar-consulta/{crm}")
   public List<ConsultaResponse> buscarConsultaPorCrm(@PathVariable String crm) {
     return service.buscarConsultaPorCrm(crm);

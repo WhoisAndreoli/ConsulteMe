@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -30,32 +31,38 @@ public class AtendenteController {
 
   AtendenteService service;
 
+  @PreAuthorize("hasAuthority('ATENDENTE')")
   @PostMapping("/criar-paciente")
   public ResponseEntity<PacienteDTO> criarPaciente(@Valid @RequestBody PacienteDTO paciente) {
     return new ResponseEntity<>(service.criarPaciente(paciente), HttpStatus.CREATED);
   }
 
+  @PreAuthorize("hasAuthority('ATENDENTE')")
   @GetMapping("/buscar-paciente/{cpf}")
   public ResponseEntity<PacienteDTO> buscarPaciente(@Valid @PathVariable String cpf) {
     return new ResponseEntity<>(service.buscarPaciente(cpf), HttpStatus.OK);
   }
 
+  @PreAuthorize("hasAuthority('ATENDENTE')")
   @GetMapping("/buscar-paciente")
   public ResponseEntity<List<PacienteDTO>> buscarPaciente() {
     return new ResponseEntity<>(service.buscarPaciente(), HttpStatus.OK);
   }
 
+  @PreAuthorize("hasAuthority('ATENDENTE')")
   @PatchMapping("/atualizar-paciente/{cpf}")
   public ResponseEntity<PacienteDTO> atualizarPaciente(@PathVariable String cpf,
       @Valid @RequestBody PacientePatchRequest request) {
     return new ResponseEntity<>(service.atualizarPaciente(cpf, request), HttpStatus.OK);
   }
 
+  @PreAuthorize("hasAuthority('ATENDENTE')")
   @PostMapping("/criar-consulta")
   public ResponseEntity<ConsultaResponse> criarConsulta(@Valid @RequestBody ConsultaRequest consultaRequest) {
     return new ResponseEntity<>(service.criarConsulta(consultaRequest), HttpStatus.CREATED);
   }
 
+  @PreAuthorize("hasAuthority('ATENDENTE')")
   @GetMapping("/buscar-consulta")
   public List<ConsultaResponse> buscarConsulta() {
     return service.buscarConsulta();

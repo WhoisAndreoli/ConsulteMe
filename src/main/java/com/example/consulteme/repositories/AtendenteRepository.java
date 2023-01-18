@@ -8,4 +8,6 @@ import com.example.consulteme.models.Atendente;
 
 public interface AtendenteRepository extends JpaRepository<Atendente, Long> {
   Optional<Atendente> findById(Long id);
+
+  Optional<Atendente> findByEmail(String email);
 }

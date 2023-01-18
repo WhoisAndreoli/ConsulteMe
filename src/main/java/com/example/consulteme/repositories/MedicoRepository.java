@@ -8,4 +8,6 @@ import com.example.consulteme.models.Medico;
 
 public interface MedicoRepository extends JpaRepository<Medico, String> {
   Optional<Medico> findById(String crm);
+
+  Optional<Medico> findByEmail(String email);
 }
