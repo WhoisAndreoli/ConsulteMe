@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-const url = 'http://localhost:8080/api/v1/medico/finalizar-consulta/42258';
+const url = 'http://localhost:8080/api/v1/medico/finalizar-consulta/144438';
 
 export const options = {
   stages: [
