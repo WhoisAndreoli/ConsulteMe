@@ -16,3 +16,5 @@ spring:
       port: 27017
       host: localhost
       authentication-database: admin
+jwt:
+  secret: a73b5898-834f-4b95-88b0-0cc1e0ded7fc

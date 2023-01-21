@@ -7,9 +7,11 @@ import com.example.consulteme.enums.Cargo;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Document
+@NoArgsConstructor
 public class AppUser {
 
   private String email;
